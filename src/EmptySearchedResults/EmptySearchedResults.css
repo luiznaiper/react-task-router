@@ -1,0 +1,13 @@
+.EmptySearchedResults{
+    color: #9ca9f2;
+    text-align: center;
+    display: block;
+}
+
+.EmptySearchedResults span{
+    color: #ff6a3d;
+}
+
+.searchValue{
+    font-weight: bold;
+}

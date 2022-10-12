@@ -1,0 +1,31 @@
+
+@media only screen and (min-width: 780px) {
+    header{
+        width: 700px;
+        margin: 0 auto;
+    }
+    .TodoList-container{
+        width: 700px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .LoadingTodo-container{
+        width: 700px;
+    }
+    .TodoCongrats{
+        width: 500px;
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+    .TodoItem{
+        width: 300px;
+        margin: 0 auto;
+        display: flex;
+    }
+    .empty-todos--p{
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+    
+}
