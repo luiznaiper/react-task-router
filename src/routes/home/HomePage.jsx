@@ -4,7 +4,7 @@ import { TodoHeader } from '../../ui/TodoHeader';
 import { TodoCounter } from '../../ui/TodoCounter';
 import { TodoSearch } from '../../ui/TodoSearch/index.js';
 import { TodoList } from '../../ui/TodoList/index.js';
-import { TodoItem } from '../../ui/TodoItem/index.js';
+import { TodoItem } from '../../ui/TodoItem/TodoItem.jsx';
 import { TodoForm } from '../../ui/TodoForm';
 import { CreateTodoButton } from '../../ui/CreateTodoButton/index.js';
 import { HideCompletedTodos } from '../../ui/HideCompletedTodos';
@@ -42,7 +42,7 @@ function HomePage() {
   } = stateUpdates;
 
   return (
-    <React.Fragment>
+    <>
       <TodoHeader loading={loading}>
         <TodoCounter totalTodos={totalTodos} completedTodos={completedTodos} />
 
@@ -70,6 +70,7 @@ function HomePage() {
             text={todo.text}
             completed={todo.completed}
             onComplete={() => toggleCompleteTodo(todo.text)}
+            onEdit={() => console.log('hola')}
             onDelete={() => deleteTodo(todo.text)}
             hide={todo.hide}
           />
@@ -85,7 +86,7 @@ function HomePage() {
       <ShowCompletedTodos onShow={() => showCompletedTodosFn()} />
 
       <ChangeAlert sincronize={sincronizeTodos} />
-    </React.Fragment>
+    </>
   );
 }
 
