@@ -1,12 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useTodos } from '../../hooks/useTodos';
 import { TodoHeader } from '../../ui/TodoHeader';
 import { TodoCounter } from '../../ui/TodoCounter';
 import { TodoSearch } from '../../ui/TodoSearch/index.js';
 import { TodoList } from '../../ui/TodoList/index.js';
 import { TodoItem } from '../../ui/TodoItem/TodoItem.jsx';
-import { TodoForm } from '../../ui/TodoForm';
-import { CreateTodoButton } from '../../ui/CreateTodoButton/index.js';
+import { CreateTodoButton } from '../../ui/CreateTodoButton/CreateTodoButton.jsx';
 import { HideCompletedTodos } from '../../ui/HideCompletedTodos';
 import { ShowCompletedTodos } from '../../ui/ShowCompletedTodos';
 import { TodoCongrats } from '../../ui/TodoCongrats';
@@ -18,6 +18,7 @@ import { EmptySearchedResults } from '../../ui/EmptySearchedResults';
 import { ChangeAlert } from '../../ui/ChangeAlert';
 import '../App.css';
 function HomePage() {
+  const navigate = useNavigate();
   const { states, stateUpdates } = useTodos();
 
   const {
@@ -27,17 +28,17 @@ function HomePage() {
     completedTodos,
     searchValue,
     searchedTodos,
-    openModal,
+    //openModal,
   } = states;
 
   const {
     setSearchValue,
     toggleCompleteTodo,
-    addTodo,
+    // addTodo,
     deleteTodo,
     hideCompletedTodosFn,
     showCompletedTodosFn,
-    setOpenModal,
+    // setOpenModal,
     sincronizeTodos,
   } = stateUpdates;
 
@@ -70,18 +71,21 @@ function HomePage() {
             text={todo.text}
             completed={todo.completed}
             onComplete={() => toggleCompleteTodo(todo.id)}
-            onEdit={() => console.log('hola')}
+            onEdit={() => navigate(`/edit/${todo.id}`)}
             onDelete={() => deleteTodo(todo.id)}
             hide={todo.hide}
           />
         )}
       </TodoList>
-      {!!openModal && (
+      {/* {!!openModal && (
         <Modal>
           <TodoForm addTodo={addTodo} setOpenModal={setOpenModal} />
         </Modal>
-      )}
-      <CreateTodoButton setOpenModal={setOpenModal} />
+      )} */}
+      <CreateTodoButton
+        onClick={() => navigate('/new')}
+        //setOpenModal={setOpenModal}
+      />
       <HideCompletedTodos onHide={() => hideCompletedTodosFn()} />
       <ShowCompletedTodos onShow={() => showCompletedTodosFn()} />
 
