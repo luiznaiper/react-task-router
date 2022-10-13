@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/react-task-router/static/css/main.2cf94516.chunk.css",
+    "main.js": "/react-task-router/static/js/main.3593a9a2.chunk.js",
+    "main.js.map": "/react-task-router/static/js/main.3593a9a2.chunk.js.map",
+    "runtime-main.js": "/react-task-router/static/js/runtime-main.bea9e7ff.js",
+    "runtime-main.js.map": "/react-task-router/static/js/runtime-main.bea9e7ff.js.map",
+    "static/js/2.6046cd9b.chunk.js": "/react-task-router/static/js/2.6046cd9b.chunk.js",
+    "static/js/2.6046cd9b.chunk.js.map": "/react-task-router/static/js/2.6046cd9b.chunk.js.map",
+    "index.html": "/react-task-router/index.html",
+    "static/css/main.2cf94516.chunk.css.map": "/react-task-router/static/css/main.2cf94516.chunk.css.map",
+    "static/js/2.6046cd9b.chunk.js.LICENSE.txt": "/react-task-router/static/js/2.6046cd9b.chunk.js.LICENSE.txt",
+    "static/media/check.849383d5.svg": "/react-task-router/static/media/check.849383d5.svg",
+    "static/media/delete.794edcf2.svg": "/react-task-router/static/media/delete.794edcf2.svg",
+    "static/media/edit.bbfc227d.svg": "/react-task-router/static/media/edit.bbfc227d.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.bea9e7ff.js",
+    "static/js/2.6046cd9b.chunk.js",
+    "static/css/main.2cf94516.chunk.css",
+    "static/js/main.3593a9a2.chunk.js"
+  ]
+}
