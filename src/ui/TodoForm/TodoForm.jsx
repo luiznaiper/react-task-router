@@ -6,16 +6,16 @@ function TodoForm(props) {
   const navigate = useNavigate();
   const [newTodoValue, setNewTodovalue] = React.useState('');
 
-  const onChange = (ev) => {
-    setNewTodovalue(ev.target.value);
+  const onChange = (e) => {
+    setNewTodovalue(e.target.value);
   };
   const onCancel = () => {
     navigate('/');
   };
-  const onSubmit = (ev) => {
-    ev.preventDefault();
-    navigate('/');
+  const onSubmit = (e) => {
+    e.preventDefault();
     props.submitEvent(newTodoValue);
+    navigate('/');
   };
   return (
     <form onSubmit={onSubmit}>

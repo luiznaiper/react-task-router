@@ -10,7 +10,6 @@ import { CreateTodoButton } from '../../ui/CreateTodoButton/CreateTodoButton.jsx
 import { HideCompletedTodos } from '../../ui/HideCompletedTodos';
 import { ShowCompletedTodos } from '../../ui/ShowCompletedTodos';
 import { TodoCongrats } from '../../ui/TodoCongrats';
-import { Modal } from '../../ui/Modal';
 import { TodosError } from '../../ui/TodosError';
 import { TodosLoading } from '../../ui/TodosLoading';
 import { EmptyTodos } from '../../ui/EmptyTodos';
