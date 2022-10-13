@@ -12,3 +12,7 @@ body {
   position: relative;
   min-height: 100vh;
 }
+
+label {
+  color: #1a2238;
+}

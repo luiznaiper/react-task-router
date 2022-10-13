@@ -15,7 +15,6 @@ import { TodosLoading } from '../../ui/TodosLoading';
 import { EmptyTodos } from '../../ui/EmptyTodos';
 import { EmptySearchedResults } from '../../ui/EmptySearchedResults';
 import { ChangeAlert } from '../../ui/ChangeAlert';
-import '../App.css';
 function HomePage() {
   const navigate = useNavigate();
   const { states, stateUpdates } = useTodos();
@@ -70,7 +69,11 @@ function HomePage() {
             text={todo.text}
             completed={todo.completed}
             onComplete={() => toggleCompleteTodo(todo.id)}
-            onEdit={() => navigate(`/edit/${todo.id}`)}
+            onEdit={() =>
+              navigate(`/edit/${todo.id}`, {
+                state: { todo },
+              })
+            }
             onDelete={() => deleteTodo(todo.id)}
             hide={todo.hide}
           />

@@ -1,89 +1,85 @@
-import React from "react"
+import React from 'react';
 
-function useLocalStorage(itemName, initialValue){
-    const [state, dispatch] = React.useReducer(reducer, initialState({ initialValue }))
-    const { 
-      sincronizedItem,
-      error,
-      loading,
-      item,
-     } = state
-     
-     //ACTION CREATORS
-     const onError = (error) =>{
-      dispatch({ type: actionTypes.error, payload: error})
-     }
-    
-     const onSuccess = (item) =>{
-      dispatch({ type: actionTypes.success, payload: item})
-     }
+function useLocalStorage(itemName, initialValue) {
+  const [state, dispatch] = React.useReducer(
+    reducer,
+    initialState({ initialValue })
+  );
+  const { sincronizedItem, error, loading, item } = state;
 
-     const onSave = (item) =>{
-      dispatch({ type: actionTypes.save, payload: item})
-     }
+  //ACTION CREATORS
+  const onError = (error) => {
+    dispatch({ type: actionTypes.error, payload: error });
+  };
 
-     const onSincronize = () =>{
-      dispatch({ type: actionTypes.sincronize})
-     }
+  const onSuccess = (item) => {
+    dispatch({ type: actionTypes.success, payload: item });
+  };
 
-    React.useEffect(()=>{
-      setTimeout(()=> {
-        try {
-          const localStorageItem = localStorage.getItem(itemName)
-          let parsedItem
-        
-          if(!localStorageItem){
-            localStorage.setItem(itemName, JSON.stringify(initialValue))
-            parsedItem = []
-          } else{
-            parsedItem = JSON.parse(localStorageItem)
-          }
-          
-          onSuccess(parsedItem)
+  const onSave = (item) => {
+    dispatch({ type: actionTypes.save, payload: item });
+  };
 
-        } catch(error) {
-          onError()
+  const onSincronize = () => {
+    dispatch({ type: actionTypes.sincronize });
+  };
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      try {
+        const localStorageItem = localStorage.getItem(itemName);
+        let parsedItem;
+
+        if (!localStorageItem) {
+          localStorage.setItem(itemName, JSON.stringify(initialValue));
+          parsedItem = [];
+        } else {
+          parsedItem = JSON.parse(localStorageItem);
         }
-      }, 1000 )
-    }, [sincronizedItem])
-   
-    const saveItem = (newItem) =>{
-      try{
-        const stringifiedItem = JSON.stringify(newItem)
-        localStorage.setItem(itemName, stringifiedItem)
-        onSave(newItem)
-      } catch(error){
-        onError(error)
+
+        onSuccess(parsedItem);
+      } catch (error) {
+        onError();
       }
-    }
-  
-    const sincronizeItem = ()=>{
-      onSincronize()
-    }
+    }, 1000);
+  }, [sincronizedItem]);
 
-    return{
-      item,
-      saveItem,
-      error,
-      loading,
-      sincronizeItem
+  const saveItem = (newItem) => {
+    try {
+      const stringifiedItem = JSON.stringify(newItem);
+      localStorage.setItem(itemName, stringifiedItem);
+      onSave(newItem);
+    } catch (error) {
+      onError(error);
     }
-  
-  }
+  };
 
- const initialState = ({ initialValue }) => ({
-   sincronizeItem: true,
-   error: false,
-   loading: true,
-   item: initialValue,
- })
+  const sincronizeItem = () => {
+    onSincronize();
+  };
+
+  return {
+    item,
+    saveItem,
+    error,
+    loading,
+    sincronizeItem,
+  };
+}
+
+const initialState = ({ initialValue }) => ({
+  sincronizeItem: true,
+  error: false,
+  loading: true,
+  item: initialValue,
+});
 
 const actionTypes = {
   error: 'ERROR',
   success: 'SUCCESS',
   save: 'SAVE',
   sincronize: 'SINCRONIZE',
-}
+};
 
 const reducerObject = (state, payload) => ({
   [actionTypes.error]: {
@@ -106,10 +102,10 @@ const reducerObject = (state, payload) => ({
     loading: true,
     sincronizedItem: false,
   },
-})
+});
 
- const reducer = (state, action) => {
-  return  reducerObject(state, action.payload)[action.type] || state
- }
+const reducer = (state, action) => {
+  return reducerObject(state, action.payload)[action.type] || state;
+};
 
-  export { useLocalStorage }
+export { useLocalStorage };
